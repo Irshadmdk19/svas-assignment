@@ -1,8 +1,11 @@
+"use client"
 import React, { useEffect, useState } from 'react';
 
 const UserSearch = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+    const [search, setSearch] = useState('');
+    const [selectedUser, setSelectedUser] = useState(null)
 
   
   useEffect(() => {   //Fetching from api
@@ -18,15 +21,54 @@ const UserSearch = () => {
       });
   }, []);
 
+  //applying filter to search by firsrname 
+   const filteredUsers = users.filter(user =>
+    user.name.first.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
-    <div style={{ padding: '2rem' }}>
-      <h2>Random Users</h2>
-      {loading ? (
-        <p>Loading users</p>
-      ) : (
-        <p>Fetchedusers from the API.</p>
-      )}
+    <div style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }} >
+         <h2>Search Contacts</h2>
+      <input
+        type="text"
+        placeholder="Search by first name..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          width: '100%',
+          padding: '0.5rem',
+          marginBottom: '1rem',
+          fontSize: '1rem',
+        }}
+      />
+      <ul
+        style={{
+          maxHeight: '200px',
+          overflowY: 'scroll',
+          listStyle: 'none',
+          padding: 0,
+          margin: 0,
+          border: '1px solid #ddd',
+          borderRadius: '5px',
+        }}
+      >
+        {filteredUsers.map((user, index) => (
+          <li
+            key={index}
+            onClick={() => setSelectedUser(user)}
+            style={{
+              padding: '0.5rem',
+              cursor: 'pointer',
+              borderBottom: '1px solid #eee',
+            }}
+          >
+            {user.name.first} {user.name.last}
+          </li>
+        ))}
+      </ul>
+ {loading && <p>Loading users...</p>}
     </div>
+   
   );
 };
 
