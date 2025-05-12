@@ -1,8 +1,12 @@
+"use client"
 import React from 'react'
+import UserSearch from './components/UserSearch'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <UserSearch/>
+    </div>
   )
 }
 
