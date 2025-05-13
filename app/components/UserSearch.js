@@ -8,7 +8,7 @@ const UserSearch = () => {
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
-    //Fetching from api
+    //Fetching users from api
     fetch("https://randomuser.me/api/?results=100")
       .then((res) => res.json())
       .then((data) => {
@@ -28,7 +28,7 @@ const UserSearch = () => {
 
   return (
     <div style={{ padding: "2rem", maxWidth: "600px", margin: "0 auto" }}>
-      <h2>Search Contacts</h2>     //To Search for Users
+      <h2>Search Contacts</h2>               {/*Searching for users*/}
       <input
         type="text"
         placeholder="Search by first name..."
@@ -51,7 +51,8 @@ const UserSearch = () => {
           border: "1px solid #ddd",
           borderRadius: "5px",
         }}
-      >
+      >  
+       {/*To select user from filtered users*/}
         {filteredUsers.map((user, index) => (
           <li
             key={index}
@@ -67,6 +68,8 @@ const UserSearch = () => {
         ))}
       </ul>
       {loading && <p>Loading users...</p>}
+
+      {/* To display Selected user's details*/}
       {selectedUser && (
         <div
           style={{
@@ -75,13 +78,17 @@ const UserSearch = () => {
             border: "1px solid #ccc",
             borderRadius: "8px",
             backgroundColor: "#f9f9f9",
+            display: "flex",
+            flexDirection:"column",
+            alignItems:"center",
+            justifyContent:"center"
           }}
         >
           <h3>Selected User Details</h3>
           <img
             src={selectedUser.picture.large}
             alt="User"
-            style={{ borderRadius: "50%", width: "100px", height: "100px" }}
+            style={{ borderRadius: "50%", width: "200px", height: "200px" }}
           />
           <p>
             <strong>Full Name:</strong> {selectedUser.name.title}{" "}
