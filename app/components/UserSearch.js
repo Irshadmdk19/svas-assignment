@@ -77,7 +77,7 @@ const UserSearch = () => {
             backgroundColor: "#f9f9f9",
           }}
         >
-          <h3>Selected  User Details</h3>
+          <h3>Selected User Details</h3>
           <img
             src={selectedUser.picture.large}
             alt="User"
@@ -91,13 +91,13 @@ const UserSearch = () => {
             <strong>Gender:</strong> {selectedUser.gender}
           </p>
           <p>
-            <strong>Emaill:</strong> {selectedUser.email}
+            <strong>Email:</strong> {selectedUser.email}
           </p>
           <p>
             <strong>Phone:</strong> {selectedUser.phone}
           </p>
           <p>
-            <strong>County:</strong> {selectedUser.location.country}
+            <strong>Country:</strong> {selectedUser.location.country}
           </p>
         </div>
       )}
