@@ -28,7 +28,7 @@ const UserSearch = () => {
 
   return (
     <div style={{ padding: "2rem", maxWidth: "600px", margin: "0 auto" }}>
-      <h2>Search Contacts</h2>
+      <h2>Search Contacts</h2>     //To Search for Users
       <input
         type="text"
         placeholder="Search by first name..."
